@@ -1,0 +1,4 @@
+.idea/*
+db/*
+html/*
+!html/.gitkeep

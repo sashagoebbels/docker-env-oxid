@@ -1,0 +1,11 @@
+FROM php:7-apache
+
+RUN apt-get update -y && apt-get install -y libpng-dev curl libcurl4-openssl-dev libmcrypt-dev libxml2-dev libc-client-dev libpq-dev libkrb5-dev libyaml-dev libcurl3 libuuid1 libevent-dev libgearman-dev vim
+
+RUN docker-php-ext-install pdo pdo_mysql gd curl iconv mcrypt soap curl pgsql pdo_pgsql mysqli zip
+RUN pecl install oauth && pecl install xdebug && pecl install yaml && docker-php-ext-enable oauth xdebug yaml
+
+RUN a2enmod rewrite
+RUN service apache2 restart
+
+RUN rm -f /var/log/apache2/access.log && rm -f /var/log/apache2/error.log && rm -f /var/log/apache2/other_vhosts_access.log
