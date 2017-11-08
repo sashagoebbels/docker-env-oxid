@@ -26,6 +26,7 @@ services:
       - MYSQL_PASSWORD=phppw
     volumes:
       - db-logs:/var/log/mysql
+      - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
