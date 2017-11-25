@@ -12,8 +12,11 @@ The html directory is a bound volume to /var/www/html in the web server image.
 ## Installing Oxid eShop
 
 Enter directory of the local working copy and follow the installation from the [official Oxid V6 repository](https://github.com/OXID-eSales/oxideshop_ce) with one exception. The first (numbered 2.) step should be:
+
 ```git clone https://github.com/OXID-eSales/oxideshop_ce.git html```
+
 to clone the oxid repository into the html directory. Then certainly the next step (3.) is ```cd html```.
+
 The webserver document root is set to /var/www/html/source, which will be the correct location, if you follow the instructions in the Oxid repository.
 Point your browser to http://localhost and follow the instructions. The database connection data is:
 - Host: db
