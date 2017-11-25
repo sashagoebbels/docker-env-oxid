@@ -9,6 +9,16 @@ To also delete all local images use `docker-compose down --rmi local`. After tha
 
 The html directory is a bound volume to /var/www/html in the web server image.
 
+## Installing Oxid eShop
+
+Enter directory html and follow the installation from the [official Oxid V6 repository](https://github.com/OXID-eSales/oxideshop_ce).
+The webserver document root is set to /var/www/html/source, which will be the correct location, if you follow the instructions in the Oxid repository.
+Point your browser to http://localhost and follow the instructions. The database connection data is:
+- Host: db
+- Database: oxid (has been created from docker-compose for you)
+- User: oxid
+- Password: oxid
+
 ## Accessing the cluster nodes
 
 - Webserver with PHP is under `localhost`

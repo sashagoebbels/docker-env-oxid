@@ -21,9 +21,9 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=rootpw
-      - MYSQL_DATABASE=lampserver
-      - MYSQL_USER=phpuser
-      - MYSQL_PASSWORD=phppw
+      - MYSQL_DATABASE=oxid
+      - MYSQL_USER=oxid
+      - MYSQL_PASSWORD=oxid
     volumes:
       - db-logs:/var/log/mysql
       - ./mysql:/var/lib/mysql
