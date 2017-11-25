@@ -1,4 +1,4 @@
-# Simple Docker Setup for PHP development
+# Simple Docker Setup for an Oxid eSales installation
 
 ## Usage
 
@@ -36,7 +36,7 @@ The html directory is a bound volume to /var/www/html in the web server image.
 - fileinfo
 - filter
 - ftp
-- gd
+- gd (with jpeg support)
 - hash
 - iconv
 - json
