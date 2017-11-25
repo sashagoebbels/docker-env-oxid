@@ -2,8 +2,14 @@
 
 ## Usage
 
-`docker-compose up --build` to build the images and start up the whole cluster.
-From there on a simple `docker-compose up` is all you need.
+`docker-compose up --build -d` to build the images and start up the whole cluster.
+From there on a simple `docker-compose up -d` is all you need.
+The `-d` option daemonizes the docker containers, so they run in the background.
+
+If you would like to see which containers are running, use:
+
+`docker-compose ps`
+
 To shut it down open an second terminal and use `docker-compose down` to tear down the cluster.
 To also delete all local images use `docker-compose down --rmi local`. After that you need to rebuild the images.
 
@@ -13,9 +19,9 @@ The html directory is a bound volume to /var/www/html in the web server image.
 
 Enter directory of the local working copy and follow the installation from the [official Oxid V6 repository](https://github.com/OXID-eSales/oxideshop_ce) with one exception. The first (numbered 2.) step should be:
 
-```git clone https://github.com/OXID-eSales/oxideshop_ce.git html```
+`git clone https://github.com/OXID-eSales/oxideshop_ce.git html`
 
-to clone the oxid repository into the html directory. Then certainly the next step (3.) is ```cd html```.
+to clone the oxid repository into the html directory. Then certainly the next step (3.) is `cd html`.
 
 The webserver document root is set to /var/www/html/source, which will be the correct location, if you follow the instructions in the Oxid repository.
 Point your browser to http://localhost and follow the instructions. The database connection data is:
@@ -23,6 +29,8 @@ Point your browser to http://localhost and follow the instructions. The database
 - Database: oxid (has been created from docker-compose for you)
 - User: oxid
 - Password: oxid
+
+You will see a warning, saying that MySQL 5.6 has some bugs but you can try to install anyway. Just ignore that and continue, since we use a decently fresh MariaDB version.
 
 ## Accessing the cluster nodes
 
