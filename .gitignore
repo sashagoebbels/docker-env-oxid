@@ -2,3 +2,5 @@
 db/*
 html/*
 !html/.gitkeep
+mysql/*
+!mysql/.gitkeep

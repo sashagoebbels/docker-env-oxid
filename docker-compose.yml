@@ -12,6 +12,7 @@ services:
       - php-logs:/var/log/apache2
     links:
       - db
+      - mailhog
 
   db:
     build:
@@ -25,7 +26,6 @@ services:
       - MYSQL_USER=oxid
       - MYSQL_PASSWORD=oxid
     volumes:
-      - db-logs:/var/log/mysql
       - ./mysql:/var/lib/mysql
 
   phpmyadmin:
@@ -46,8 +46,12 @@ services:
       - ./elk/logstash:/etc/logstash
       - ./elk/logstash/patterns:/opt/logstash/patterns
       - php-logs:/var/log/apache2
-      - db-logs:/var/log/mysql
+      
+  mailhog:
+    hostname: mailhog
+    image: mailhog/mailhog:latest
+    ports:
+      - 8025:8025
 
 volumes:
   php-logs:
-  db-logs:
