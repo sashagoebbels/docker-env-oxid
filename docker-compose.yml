@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.php7
     ports:
-      - "80:80"
+      - "${WEBPORT}:80"
     volumes:
       - ./html:/var/www/html
       - php-logs:/var/log/apache2
@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile.mariadb
     ports:
-      - 3306:3306
+      - "${DBPORT}:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpw
       - MYSQL_DATABASE=oxid
@@ -31,7 +31,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
-      - 8080:80
+      - "${PHPMYADMINPORT}:80"
     environment:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: rootpw
@@ -41,7 +41,7 @@ services:
   elk:
     image: willdurand/elk
     ports:
-      - 81:80
+      - "${ELKPORT}:80"
     volumes:
       - ./elk/logstash:/etc/logstash
       - ./elk/logstash/patterns:/opt/logstash/patterns
@@ -51,7 +51,7 @@ services:
     hostname: mailhog
     image: mailhog/mailhog:latest
     ports:
-      - 8025:8025
+      - "${MAILHOG}:8025"
 
 volumes:
   php-logs:
