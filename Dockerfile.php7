@@ -10,11 +10,9 @@ RUN pecl install oauth  && pecl install yaml && pecl install xdebug && docker-ph
 
 COPY config/000-default.conf /etc/apache2/sites-available
 COPY config/composer /usr/local/bin
-RUN /usr/local/bin/composer selfupdate
 COPY config/oxid.ini /usr/local/etc/php/conf.d
-RUN a2dissite 000-default.conf && a2ensite 000-default.conf
+RUN /usr/local/bin/composer selfupdate && a2dissite 000-default.conf && a2ensite 000-default.conf
 
-RUN a2enmod rewrite
-RUN service apache2 restart
+RUN a2enmod rewrite && service apache2 restart
 
 RUN rm -f /var/log/apache2/access.log && rm -f /var/log/apache2/error.log && rm -f /var/log/apache2/other_vhosts_access.log
