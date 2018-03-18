@@ -1,0 +1,1 @@
+composer create-project --no-dev oxid-esales/oxideshop-project html dev-b-6.0-ce
